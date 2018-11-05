@@ -15,17 +15,20 @@ class LinkedListTester
 
 	private:
 
+		/**
+		*@brief Creates an empty list and checks isEmpty()'s functionality
+		**/
 		void  isEmptyTest01();
-
+		/**
+		*@brief Creates a list of size 1 checks isEmpty()'s functionality
+		**/
 		void	isEmptyTest02();
 
 
 		/**
-		*@brief Creates and empty list of ints and checks isEmpty()'s functionality
+		*@brief Creates and empty list of ints and checks size()'s return
 		**/
 		void sizeTest01();
-
-
 
 
 		/**
@@ -35,51 +38,24 @@ class LinkedListTester
 
 
 		/**
-		*@brief Creates a list of 3 values and and inserts a fourth one in the second position.  Verifies insert()'s functionality
+		*@brief Creates a list of 2 values using addFront() then checks the value at the front of the list
 		**/
-			void sizeTest03();
+		void addFrontTest01();
 
 		/**
-		*@brief Creates a list of 2 values using addFront() and insert() then removes it using removeFront()
+		*@brief Creates a list of 2 values using addFront() then tries to remove it using removeFront()
 		**/
 		void removeFrontTest01();
 
 		/**
-		*@brief Creates a list of 2 values using addFront() then addBack then checks if value at the back is the right one
+		*@brief Creates a list of 2 values using addBack() and checks the value at the back of the list
 		**/
 		void addBackTest01();
 
-
-
-
 		/**
-		*@brief Creates a list of 2 values using addFront() and addBack() then removes the back using removeBack()
-		**/
-			void addFrontTest01();
-
-
-		/**
-		*@brief Creates a list of 3 values using addFront() three times then adds fourth value in position 2 using insert(). Then removes the middle value (position 2) using remove()
-		**/
-			void sizeTest07();
-
-
-		/**
-		*@brief Creates an empty list then tries to insert a value into position 0.  Throws exception if functioning properly
-		**/
-			void sizeTest08();
-
-
-
-
-		/**
-		*@brief Creates a list of 1 value and tries to remove() position 2. Throws exception if functioning properly
+		*@brief Creates a list of 2 values using addFront() then tries to delete value at the back using removeBack
 		**/
 		void removeBackTest01();
-
-
-
-
 
 
 		/**
@@ -92,6 +68,15 @@ class LinkedListTester
 		**/
 		void searchTest02();
 
+		/**
+		*@brief Creates a list of values and uses search to try and find value of wrong type (char)
+		**/
+		void searchTest03();
+
+		/**
+		*@brief Creates a list of [1,2,3].  Searches for "1.2" and "4.2".  Shows that search accepts doubles and how it deals with them.
+		**/
+		void searchTest04();
 
 
 

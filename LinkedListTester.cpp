@@ -34,24 +34,12 @@ void LinkedListTester::runTests()
 	searchTest02();
 	std::cout<<"\n";
 
-	/*
-	insertTest01();
+	searchTest03();
 	std::cout<<"\n";
-	removeTest01();
+
+
+	searchTest04();
 	std::cout<<"\n";
-	replaceTest01();
-	std::cout<<"\n";
-	replaceTest02();
-	std::cout<<"\n";
-	clearTest01();
-	std::cout<<"\n";
-	getEntryTest01();
-	std::cout<<"\n";
-	getEntryTest02();
-	std::cout<<"\n";
-	copyConstTest01();
-	std::cout<<"\n";
-	*/
 }
 
 void LinkedListTester::isEmptyTest01()
@@ -103,9 +91,8 @@ else{
 void LinkedListTester::sizeTest01()
 {
 	std::cout<<" Size Test #1: size of empty list is zero: \n";
-	bool test=true;
 	LinkedListOfInts testableList;
-	if(testableList.isEmpty()==test  && testableList.size()== 0)
+	if(testableList.size()== 0)
 	{
 		std::cout<<"\n \t PASSED \n";
 	}
@@ -347,6 +334,76 @@ else
 
 
 }
+
+
+
+/*------------------------------------------------searchTest3---------------------------------------------------------*/
+
+void LinkedListTester::searchTest03()
+{
+
+	std::cout<<" Search Test #3: adds values and checks for value of wrong type (char) to ensure search properly works. \n";
+	LinkedListOfInts testableList;
+	int u = 1;
+	int v = 2;
+	int w = 3;
+
+
+	testableList.addFront(u);
+	testableList.addFront(v);
+	testableList.addFront(w);
+	bool flag = false;
+	flag = testableList.search('y');
+
+if(flag)
+{
+		std::cout<<"\n"<<"\t FAILED...(search found a value in the list that was not an integer) \n";
+}
+else
+{
+		std::cout<<"\n \t PASSED \n";
+}
+
+
+}
+/*------------------------------------------------searchTest3---------------------------------------------------------*/
+void LinkedListTester::searchTest04()
+{
+
+	std::cout<<" Search Test #4: adds values and checks for value of wrong type (double) to ensure search properly works. \n";
+	LinkedListOfInts testableList;
+	int u = 1;
+	int v = 2;
+	int w = 3;
+
+
+	testableList.addFront(u);
+	testableList.addFront(v);
+	testableList.addFront(w);
+	bool flag1 = false;
+	bool flag2 = false;
+	flag1 = testableList.search(1.2); //double that truncates to "1", a  value that exists in the list
+	flag2 = testableList.search(4.2); //double that truncates to "4", a value that does NOT exist in the list
+
+if(flag1){
+
+		std::cout<<"\n"<<"\t FAILED...(search found a double in the list that truncates to an int in the list) \n";
+		std::cout<<"\n \t Given value was 1.2, search looked for '1', and since 1 is in the list, search returns true.  Failed because '1.2' is not in the list.\n";
+
+		if(!flag2){
+								std::cout<<"\n"<<"\t ALSO...(search did not find the other double inserted into the list that does not truncate down to an existing int in the list) \n";
+								std::cout<<"\n \t Given value was 4.2, search looked for '4', and as expected, did not find it\n";
+							}
+					}
+else
+{
+		std::cout<<"\n \t PASSED \n";
+}
+
+
+}
+
+
 
 /*
 void LinkedListTester::replaceTest02()

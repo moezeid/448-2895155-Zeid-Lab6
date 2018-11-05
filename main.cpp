@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 	//Example of declaring a LinkedListOfInts
 
 	LinkedListTester tester;
-
+	std::cout << "Running...\n";
 	tester.runTests();
 
 	//You won't do all the tests in main; that's what your Test class will be for
@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 	//TestSuite myTester;
 	//myTester.runTests();
 
-	std::cout << "Running...\nAnd we're done.\nGoodbye.\n";
+	std::cout<<"And we're done.\nGoodbye.\n";
 
 	return (0);
 

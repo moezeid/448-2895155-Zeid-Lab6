@@ -1,0 +1,47 @@
+Bug List:
+
+
+  There were a few bugs found in the implementation of LinkedListOfInts:
+
+    1.) isEmpty() returns true on non-empty as well as empty lists.
+
+          This is one singular problem with isEmpty.  We know this for a fact because the second isEmpty test ensures that
+          the list is not empty by checking the value of size after adding a value.  I suspect this error is also causing the
+          errors listed below for removeFront and removeBack.
+
+
+    2.)  removeFront does not work since it does not remove values (front or otherwise).
+
+          Two values were added to the list using addFront, since addFront passes its test. In one sense, it does work, because it does return 0 if the list is empty.
+          However, we now know this is due to isEmpty() never evaluating to false, as it should with a non-empty list.
+          I suspect that removeFront only operates when isEmpty() tells it that the list is not empty, and as a result, removeFront never removes the value.
+
+    3.)  addBack does not work since it appends values to the front and not the back
+
+          Two values are added using addBack.  The second value that was added should be the value in the back, since the
+          first value that is added automatically goes to the front.  After a simple check to ensure that two values were indeed added,
+          we find that the value that should be at the back of the list, is in the front.  Therefore, addBack is dysfunctional
+
+
+
+
+    4.)  removeBack does not work since it does not remove values (front or otherwise).
+
+          Two values were added to the list using addFront, because tests tell us that addFront properly functions and addBack does not.
+          In one sense, it does work, because it does return 0 if the list is empty.  However, we now know this is due to isEmpty() never
+          evaluating to false, as it should with a non-empty list.  I suspect that removeBack only operates when isEmpty() tells it
+          that the list is not empty, and as a result, removeBack never removes the value.
+
+
+
+    5.)  Search works, for the most part.
+
+          It seems that search works correctly in restricting the type of value to being a type of number.  However, if given a double,
+          it will evaluate to true if the value given truncates down to a valid integer in the list. In other words, while search may pass some tests
+          given a value of type double rather, than integer, it does not explicitly take integers.
+
+
+   6.)  The destructor does not seem to be working
+
+        After running valgrind on the program, it becomes apparent that the destructor does not properly delete the nodes and clear the memory.
+        Valgrind says there are memory leaks.
