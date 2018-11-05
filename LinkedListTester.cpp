@@ -5,41 +5,42 @@ LinkedListTester::LinkedListTester()
 }
 void LinkedListTester::runTests()
 {
+	std::cout<<"--------------------------------------------------\n";
 	isEmptyTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 	isEmptyTest02();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 
 	sizeTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	sizeTest02();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	addFrontTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	removeFrontTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	addBackTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	removeBackTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	searchTest01();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 	searchTest02();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 	searchTest03();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 
 
 	searchTest04();
-	std::cout<<"\n";
+	std::cout<<"--------------------------------------------------\n";
 }
 
 void LinkedListTester::isEmptyTest01()
