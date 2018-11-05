@@ -15,6 +15,10 @@ class LinkedListTester
 
 	private:
 
+		void  isEmptyTest01();
+
+		void	isEmptyTest02();
+
 
 		/**
 		*@brief Creates and empty list of ints and checks isEmpty()'s functionality
@@ -22,27 +26,28 @@ class LinkedListTester
 		void sizeTest01();
 
 
+
+
 		/**
-		*@brief Creates an empty list of ints and adds one value. Verifys that isEmpty() returns false and size() returns 1
+		*@brief size returns correct value after each successive insertion of one million numbers of random numbers from 0 to INT_MAX
 		**/
 			void sizeTest02();
 
 
 		/**
-		*@brief Creates an empty list and checks for getLength() to return 0
-		**/
-			void sizeTest03();
-
-
-		/**
 		*@brief Creates a list of 3 values and and inserts a fourth one in the second position.  Verifies insert()'s functionality
 		**/
-			void sizeTest04();
+			void sizeTest03();
 
 		/**
 		*@brief Creates a list of 2 values using addFront() and insert() then removes it using removeFront()
 		**/
-		void sizeTest05();
+		void removeFrontTest01();
+
+		/**
+		*@brief Creates a list of 2 values using addFront() then addBack then checks if value at the back is the right one
+		**/
+		void addBackTest01();
 
 
 
@@ -50,7 +55,7 @@ class LinkedListTester
 		/**
 		*@brief Creates a list of 2 values using addFront() and addBack() then removes the back using removeBack()
 		**/
-			void sizeTest06();
+			void addFrontTest01();
 
 
 		/**
@@ -70,7 +75,7 @@ class LinkedListTester
 		/**
 		*@brief Creates a list of 1 value and tries to remove() position 2. Throws exception if functioning properly
 		**/
-		void removeTest01();
+		void removeBackTest01();
 
 
 
@@ -78,53 +83,15 @@ class LinkedListTester
 
 
 		/**
-		*@brief Creates a list of 1 value and tries to replace a value in position 2.  Throws exception if working properly
+		*@brief Creates a list of 6 values and runs search on every inserted value. Passes if all values are found.
 		**/
-		void replaceTest01();
-
-
-
-
-
+		void searchTest01();
 
 		/**
-		*@brief Creates a list of 2 values and uses replace() to replace a value in position 1.  Verifies that the size of the list is unaffected.
+		*@brief Creates a list of values and uses search to try and find bogus value. Passes if search returns false.
 		**/
-		void replaceTest02();
+		void searchTest02();
 
-
-
-
-
-		/**
-		*@brief Creates a list of 2 values and uses replace() to replace a value in position 1.  Verifies that the replace() was successful
-		**/
-		void replaceTest03();
-
-
-
-		/**
-		*@brief Creates a list of 3 values then runs clear(). Verifies functionality if getSize() returns 0
-		**/
-		void clearTest01();
-
-
-
-		/**
-		*@brief Creates a list of 1 value and verifies that it was successfully added using getEntry()
-		**/
-		void getEntryTest01();
-
-
-		/**
-		*@brief Creates an empty list and uses getEntry() on position 1. Functionality is verified if exception is thrown.
-		**/
-		void getEntryTest02();
-
-		/**
-		*@brief Creates a list of 2 values then creates another list using a LinkedList's copy constructor.  Verifies functionality by comparing values from each list.
-		**/
-		void copyConstTest01();
 
 
 

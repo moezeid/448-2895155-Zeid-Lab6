@@ -5,6 +5,11 @@ LinkedListTester::LinkedListTester()
 }
 void LinkedListTester::runTests()
 {
+	isEmptyTest01();
+	std::cout<<"\n";
+	isEmptyTest02();
+	std::cout<<"\n";
+
 
 	sizeTest01();
 	std::cout<<"\n";
@@ -12,17 +17,24 @@ void LinkedListTester::runTests()
 	sizeTest02();
 	std::cout<<"\n";
 
-	sizeTest03();
+	addFrontTest01();
 	std::cout<<"\n";
+
+	removeFrontTest01();
+	std::cout<<"\n";
+
+	addBackTest01();
+	std::cout<<"\n";
+
+	removeBackTest01();
+	std::cout<<"\n";
+
+	searchTest01();
+	std::cout<<"\n";
+	searchTest02();
+	std::cout<<"\n";
+
 	/*
-	sizeTest04();
-	std::cout<<"\n";
-	sizeTest05();
-	std::cout<<"\n";
-	sizeTest06();
-	std::cout<<"\n";
-	sizeTest07();
-	std::cout<<"\n";
 	insertTest01();
 	std::cout<<"\n";
 	removeTest01();
@@ -42,61 +54,81 @@ void LinkedListTester::runTests()
 	*/
 }
 
-
-
-
-
-
-
-
-/**
-*@pre a list exists
-
-
-**/
-void LinkedListTester::sizeTest01()
+void LinkedListTester::isEmptyTest01()
 {
-	std::cout<<"Size Test #1: size of empty list is zero: ";
-	bool test=true;
+	std::cout<<" isEmpty Test #1: isEmpty returns true on an empty list: \n";
 	LinkedListOfInts testableList;
-	if(testableList.isEmpty()==test)
+	if(testableList.isEmpty())
 	{
-		std::cout<<"PASSED \n";
+		std::cout<<"\n \t PASSED \n";
 	}
 	else
 	{
-		std::cout<<"FAILED \n";
+		std::cout<<"\n \t FAILED \n";
 	}
 
 
 }
+
+void LinkedListTester::isEmptyTest02()
+{
+	std::cout<<" isEmpty Test #2: isEmpty returns false on a non-empty list: \n";
+	LinkedListOfInts testableList;
+	testableList.addFront(1);
+	if(testableList.size()==1)
+	{
+
+
+			if(testableList.isEmpty() == false )
+			{
+				std::cout<<"\n \t PASSED \n";
+			}
+			else
+			{
+				std::cout<<"\n \t FAILED...(isEmpty returned true after a value was added to the list and confirmed by size() ) \n";
+			}
+
+
+}
+else{
+			std::cout<<"\n \t FAILED...(size did not update new size to 1) \n";
+
+		}
+
+
+}
+
+/*------------------------------------------------sizeTest1---------------------------------------------------------*/
+
+void LinkedListTester::sizeTest01()
+{
+	std::cout<<" Size Test #1: size of empty list is zero: \n";
+	bool test=true;
+	LinkedListOfInts testableList;
+	if(testableList.isEmpty()==test  && testableList.size()== 0)
+	{
+		std::cout<<"\n \t PASSED \n";
+	}
+	else
+	{
+		std::cout<<"\n \t FAILED \n";
+	}
+
+
+}
+
+
+/*------------------------------------------------sizeTest2---------------------------------------------------------*/
 
 void LinkedListTester::sizeTest02()
 {
-	std::cout<<"Size Test #2: size returns correct value after for each insertion up to  ";
-	int value = rand() % 100;
-	LinkedListOfInts testableList;
-	testableList.addFront(value);
-	if(1==testableList.size())
-	{
-		std::cout<<"PASSED \n";
-	}
-	else
-	{
-		std::cout<<"FAILED \n";
-	}
-
-}
-
-void LinkedListTester::sizeTest03()
-{
-	std::cout<<"Size Test #3: size returns correct value after each successive insertion of a random number up to INT_MAX";
+	std::cout<<" Size Test #2: size returns correct value after each successive insertion of one million numbers of random numbers from 0 to INT_MAX\n";
 
 
 	LinkedListOfInts testableList;
 
 	bool isRight = true;
-	for(int i=0; i<INT_MAX;i++)
+	for(int i=0; i<1000000;i++)
 	{
 		if(testableList.size()!= i)
 		{
@@ -116,169 +148,207 @@ void LinkedListTester::sizeTest03()
 
 	if(isRight)
 	{
-		std::cout<<"PASSED \n";
+		std::cout<<"\n \t PASSED \n";
 	}
 	else
 	{
-		std::cout<<"FAILED \n";
+		std::cout<<"\n \t FAILED \n";
 	}
 }
+
+/*------------------------------------------------removeFrontTest1---------------------------------------------------------*/
+void LinkedListTester::removeFrontTest01()
+{
+	std::cout<<" removeFront Test #1: two values added using addFront then one removed using removeFront: \n";
+	int x=4;
+	int y=5;
+	LinkedListOfInts testableList;
+	testableList.addFront(y);
+	testableList.addFront(x);
+	if(testableList.size() !=2)
+	{
+			std::cout<<"\n \t FAILED...(size does not return 2 after two additions) \n";
+	}
+	else{
+
+
+			bool removeFrontVal = testableList.removeFront();
+
+			std::vector<int> vec = testableList.toVector();
+
+
+			if(vec.at(0) == 4 && testableList.size() == 2 && removeFrontVal == 0)
+			{
+				std::cout<<"\n \t FAILED...(integer placed at front of list remains there and size remains the same, removeFront believes list is empty because it returns 0) \n";
+			}
+			else
+			{
+				std::cout<<"\n \t PASSED \n";
+			}
+	}
+
+	/*------------------------------------------------removeBackTest1---------------------------------------------------------*/
+}
+void LinkedListTester::removeBackTest01()
+{
+	std::cout<<" removeBack Test #1: two values added using addFront (because we now know addBack is dysfunctional) then one removed using removeBack: \n";
+	int x=4;
+	int y=5;
+	LinkedListOfInts testableList;
+	testableList.addFront(y);
+	testableList.addFront(x);
+	if(testableList.size() !=2)
+	{
+			std::cout<<"\n \t FAILED...(size does not return 2 after two additions) \n";
+	}
+	else{
+
+
+			bool removeBackVal = testableList.removeBack();
+
+			std::vector<int> vec = testableList.toVector();
+
+
+			if(vec.at(1) == 5 && testableList.size() == 2  && removeBackVal == 0)
+			{
+				std::cout<<"\n \t FAILED...(integer placed at back of list remains there and size remains the same, removeBack believes list is empty because it returns 0) \n";
+			}
+			else
+			{
+				std::cout<<"\n \t PASSED \n";
+			}
+	}
+
+
+}
+/*------------------------------------------------addBackTest1---------------------------------------------------------*/
+
+void LinkedListTester::addBackTest01()
+{
+	std::cout<<" addBack Test #1: two values added, both using addBack, then checks if value at the back is right: \n";
+	int x=4;
+	int y=5;
+	LinkedListOfInts testableList;
+	testableList.addBack(x);
+	testableList.addBack(y);
+
+	std::vector<int> vec = testableList.toVector();
+
+
+	if(vec.at(1) != 5)
+	{
+			std::cout<<"\n"<<"\t FAILED...(integer placed at back of list is not the one that was added) \n";
+	}
+	else
+	{
+			std::cout<<"\n \t PASSED \n";
+	}
+
+
+
+}
+/*------------------------------------------------addFrontTest1---------------------------------------------------------*/
+
+void LinkedListTester::addFrontTest01()
+{
+	std::cout<<" addFront Test #1: two values added, both using addFront then checks if value at the front is right: \n";
+	int x=4;
+	int y=5;
+	LinkedListOfInts testableList;
+	testableList.addFront(x);
+	testableList.addFront(y);
+
+	std::vector<int> vec = testableList.toVector();
+
+
+	if(vec.at(0) != 5)
+	{
+			std::cout<<"\n"<<"\t FAILED...(integer placed second using addFront is not at the front of the list) \n";
+	}
+	else
+	{
+			std::cout<<"\n \t PASSED \n";
+	}
+
+
+
+}
+/*------------------------------------------------searchTest1---------------------------------------------------------*/
+
+void LinkedListTester::searchTest01()
+{
+
+	std::cout<<" Search Test #1: adds values and checks for their existence in the list: \n";
+	LinkedListOfInts testableList;
+	int u = rand() % INT_MAX;
+	int v = rand() % INT_MAX;
+	int w = rand() % INT_MAX;
+	int x = rand() % INT_MAX;
+	int y = rand() % INT_MAX;
+	int z = rand() % INT_MAX;
+	int array[6]= {z,y,x,w,v,u};
+
+	testableList.addFront(u);
+	testableList.addFront(v);
+	testableList.addFront(w);
+	testableList.addFront(x);
+	testableList.addFront(y);
+	testableList.addFront(z);
+
+	bool flag = true;
+for(int i =0; i<6;i++){
+	if(testableList.search(array[i]) == false){  //runs search on every value contained in array
+		flag = false;
+		break;
+		}
+}
+if(flag == false)
+{
+		std::cout<<"\n"<<"\t FAILED...(search could not find value inserted into list) \n";
+}
+else
+{
+		std::cout<<"\n \t PASSED \n";
+}
+
+
+}
+/*------------------------------------------------searchTest2---------------------------------------------------------*/
+
+void LinkedListTester::searchTest02()
+{
+
+	std::cout<<" Search Test #2: adds values and checks for bogus values to ensure search properly works. \n";
+	LinkedListOfInts testableList;
+	int u = 1;
+	int v = 2;
+	int w = 3;
+
+
+	testableList.addFront(u);
+	testableList.addFront(v);
+	testableList.addFront(w);
+	int array[3] = {4,5,6};
+	bool flag = false;
+for(int i =0; i<3;i++){
+	if(testableList.search(array[i]) == 1){  //runs search on every value contained in array
+		flag = true;
+		break;
+		}
+}
+if(flag)
+{
+		std::cout<<"\n"<<"\t FAILED...(search found a value in the list that was not put in there) \n";
+}
+else
+{
+		std::cout<<"\n \t PASSED \n";
+}
+
+
+}
+
 /*
-void LinkedListTester::sizeTest04()
-{
-	std::cout<<"Size Test #4: size returns correct value after inserting at middle of list: ";
-
-
-
-	LinkedList<int> list1;
-	int w=0;
-	int x=1;
-	int y=2;
-	int z=3;
-	list1.addFront(w);
-	list1.addFront(x);
-	list1.addFront(y);
-
-	list1.insert(2,z);
-
-	if(4==list1.getLength())
-	{
-		std::cout<<"PASSED \n";
-	}
-	else
-	{
-		std::cout<<"FAILED \n";
-	}
-}
-
-void LinkedListTester::sizeTest05()
-{
-	std::cout<<"Size Test #5: size returns correct value after adds and removes from front of list: ";
-	int x=4;
-	int y=5;
-	LinkedList<int> list1;
-	list1.addFront(x);
-	list1.insert(2,y);
-	list1.removeFront();
-	if(1==list1.getLength())
-	{
-		std::cout<<"PASSED \n";
-	}
-	else
-	{
-		std::cout<<"FAILED \n";
-	}
-
-
-}
-void LinkedListTester::sizeTest06()
-{
-	std::cout<<"Size Test #6: size returns correct value after adds and removes from back of list: ";
-	int x=4;
-	int y=5;
-	LinkedList<int> list1;
-	list1.addFront(x);
-	list1.addBack(y);
-	list1.removeBack();
-	if(1==list1.getLength())
-	{
-		std::cout<<"PASSED \n";
-	}
-	else
-	{
-		std::cout<<"FAILED \n";
-	}
-}
-
-void LinkedListTester::sizeTest07()
-{
-	std::cout<<"Size Test #7: size returns correct value after adds and removes from middle of list: ";
-
-	LinkedList<int> list1;
-	int w=0;
-	int x=1;
-	int y=2;
-	int z=3;
-	list1.addFront(w);
-	list1.addFront(x);
-	list1.addFront(y);
-
-	list1.insert(2,z);
-	list1.remove(2);
-
-	if(3==list1.getLength())
-	{
-		std::cout<<"PASSED \n";
-	}
-	else
-	{
-		std::cout<<"FAILED \n";
-	}
-}
-
-void LinkedListTester::insertTest01()
-{
-	std::cout<<"Insert Test #1: throws exception if position given is invalid: \n";
-	LinkedList<int> list1;
-	int x=4;
-	try
-	{
-		list1.insert(0,x);
-		std::cout<<" FAILED\n";
-	}
-	catch(std::runtime_error e)
-	{
-
-		std::cerr<<e.what()<<" PASSED\n";
-
-
-	}
-
-}
-
-void LinkedListTester::removeTest01()
-{
-	std::cout<<"Remove Test #1: throws exception if position given is invalid: \n";
-	LinkedList<int> list1;
-	int x=4;
-	list1.addFront(x);
-	try
-	{
-		list1.remove(2);
-		std::cout<<" FAILED\n";
-	}
-	catch(std::runtime_error e)
-	{
-
-		std::cerr<<e.what()<<" PASSED\n";
-
-
-	}
-
-}
-
-void LinkedListTester::replaceTest01()
-{
-
-	std::cout<<"Replace Test #1: throws exception if position given is invalid: \n";
-	LinkedList<int> list1;
-	int x=4;
-	int y=6;
-	list1.addFront(x);
-	try
-	{
-		list1.replace(2,y);
-		std::cout<<" FAILED\n";
-	}
-	catch(std::runtime_error e)
-	{
-
-		std::cerr<<e.what()<<" PASSED\n";
-
-
-	}
-
-}
 void LinkedListTester::replaceTest02()
 {
 	std::cout<<"Replace Test #2: returns correct size after value is replaced \n";
